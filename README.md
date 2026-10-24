@@ -30,6 +30,58 @@ An educational, interactive web-based visualizer for Long Short-Term Memory (LST
 
 ---
 
+## Vercel Deployment Guide
+
+The repository includes a production-ready `vercel.json` configuration configured specifically for Vite Single-Page Applications (SPA), with catch-all rewrites to `/index.html`, immutable asset caching, and HTTP security headers.
+
+### Method 1: Deploy with Vercel CLI
+
+```bash
+# 1. Install the Vercel CLI globally
+npm install -g vercel
+
+# 2. Login to your Vercel account
+vercel login
+
+# 3. Deploy to preview
+vercel
+
+# 4. Deploy directly to production
+vercel --prod
+```
+
+### Method 2: Deploy via GitHub / GitLab / Bitbucket
+
+1. Push your repository to your Git provider (GitHub, GitLab, or Bitbucket).
+2. Go to the [Vercel Dashboard](https://vercel.com/new).
+3. Click **"Add New..."** → **"Project"** and import your repository.
+4. Vercel will automatically detect **Vite** from `package.json` and configure:
+   - **Framework Preset**: `Vite`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm install`
+5. Click **"Deploy"**. The site will deploy instantly with a live `.vercel.app` URL and automatic SSL.
+
+### Vercel Routing & SPA Catch-All (`vercel.json`)
+
+The included `vercel.json` ensures client-side routing works seamlessly on deep link reloads:
+
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+---
+
 ## Security Directives & Secret Management
 
 The application enforces zero-hardcoding hygiene and OWASP Top 10 security standards.
