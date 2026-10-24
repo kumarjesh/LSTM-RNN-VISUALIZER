@@ -1,0 +1,7 @@
+{
+  "name": "LSTM Interactive Visualizer",
+  "description": "Educational, interactive schematic visualizer for Long Short-Term Memory (LSTM) neural networks featuring live mathematical inspection, sandbox gate overrides, and animated sequence stepping.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
