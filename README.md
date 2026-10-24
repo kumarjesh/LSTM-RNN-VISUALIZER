@@ -59,8 +59,16 @@ vercel --prod
    - **Framework Preset**: `Vite`
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
-   - **Install Command**: `npm install`
+   - **Install Command**: `npm install --legacy-peer-deps`
 5. Click **"Deploy"**. The site will deploy instantly with a live `.vercel.app` URL and automatic SSL.
+
+### Peer Dependency Handling (React 19 & ERESOLVE Fix)
+
+To prevent `npm error code ERESOLVE` during Vercel's automated `npm install` phase, the project includes:
+1. `.npmrc` configured with `legacy-peer-deps=true`
+2. `vercel.json` configured with `"installCommand": "npm install --legacy-peer-deps"`
+
+This ensures npm resolves React 19 peer dependencies smoothly without throwing build-time dependency tree conflicts.
 
 ### Vercel Routing & SPA Catch-All (`vercel.json`)
 
